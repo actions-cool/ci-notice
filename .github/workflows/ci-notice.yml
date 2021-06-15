@@ -1,0 +1,19 @@
+name: CI Notice
+
+on:
+  issues
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@main
+      
+      - uses: actions-cool/ci-notice@main
+        with:
+          ci: |
+            npm install
+            npm run package
+          notice-type: 'dingding'
+          dingding-token: ${{ TEST_D }}
