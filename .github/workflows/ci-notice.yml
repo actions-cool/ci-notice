@@ -15,5 +15,5 @@ jobs:
           ci: |
             npm install
             npm run package
-          notice-type: 'dingding'
+          notice-type: 'issue'
           dingding-token: ${{ secrets.TEST_D }}
