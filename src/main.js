@@ -25,7 +25,7 @@ async function run() {
         const noticeTitle = core.getInput('notice-title') || `# 🤖 ${owner}/${repo} CI Notice`;
         const noticeBody =
           core.getInput('notice-body') ||
-          'CI: \n\n```' + `\n${ci}\n` + '```' + `\n\n🚨 Operation failed, please check in time!`;
+          'CI: \n\n```' + `\n${core.getInput('ci')}\n` + '```' + `\n\n🚨 Operation failed, please check in time!`;
 
         if (noticeType === 'dingding') {
           const dingdingToken = core.getInput('dingding-token');
