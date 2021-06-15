@@ -16,4 +16,4 @@ jobs:
             npm install
             npm run package
           notice-type: 'dingding'
-          dingding-token: ${{ TEST_D }}
+          dingding-token: ${{ secrets.TEST_D }}
