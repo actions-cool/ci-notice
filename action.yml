@@ -1,22 +1,40 @@
 # https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions
-name: 'Action JS Template'
-description: 'A simple javascript template for rapid development of GitHub actions.'
+name: 'CI Notice'
+description: 'Notify you when CI fails'
 author: 'xrkffgg'
 
+# https://actions-cool.github.io/github-action-branding/
 branding:
-  # https://actions-cool.github.io/github-action-branding/
-  icon: 'file'
-  color: 'blue'
+  icon: 'message-circle'
+  color: 'red'
 
 inputs:
-  GITHUB_TOKEN:
+  token:
     description: Secret GitHub API token to use for making API requests.
     default: ${{ github.token }}
     required: true
+  ci:
+    description: CI you want to check
+    default: |
+      npm install
+      npm run build
+      npm run test
+  notice-type:
+    description: The notify way
+  dingding-token:
+    description: DingTalk token
+  notice-title:
+    description: The notify title
+  notice-body:
+    description: The notify body
+  issue-labels:
+    description: The issue labels
+  issue-assignees:
+    description: The issue assignees
 
-#outputs:
-#  result:
-#    description: action result
+outputs:
+  result:
+    description: CI result
 
 runs:
   using: 'node12'
