@@ -26,7 +26,7 @@ async function run() {
         const noticeTitle = core.getInput('notice-title') || `🤖 ${owner}/${repo} CI Notice`;
         const noticeBody =
           core.getInput('notice-body') ||
-          '🚨 CI run failed, please check in time!\n\n```' + `\n${core.getInput('ci')}\n` + '```';
+          '🚨 CI run failed, please check in time!\n\n\n\n```' + `\n${core.getInput('ci')}\n` + '```';
 
         for (let noticeType of noticeTypes) {
           if (noticeType === 'dingding') {
@@ -35,7 +35,7 @@ async function run() {
               msgtype: 'markdown',
               markdown: {
                 title: noticeTitle,
-                text: `#[${noticeTitle}](https://github.com/${owner}/${repo})\n\n${noticeBody}`,
+                text: `#[${noticeTitle}](https://github.com/${owner}/${repo})\n\n\n\n${noticeBody}`,
               },
             });
           }
