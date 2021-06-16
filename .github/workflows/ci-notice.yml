@@ -1,7 +1,8 @@
 name: CI Notice
 
 on:
-  issues
+  schedule:
+    - cron: '0 0 * * *'
 
 jobs:
   setup:
@@ -15,7 +16,5 @@ jobs:
           ci: |
             npm install
             npm run package
-          notice-types: 'dingding, issue'
-          dingding-token: ${{ secrets.TEST_D }}
-          issue-labels: 'x1, x2'
-          issue-assignees: 'xrkffgg, HuaRin'
+          notice-types: 'issue'
+          issue-assignees: 'xrkffgg'
