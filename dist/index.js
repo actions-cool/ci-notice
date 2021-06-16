@@ -12772,40 +12772,39 @@ async function run() {
         }
         core.setOutput('result', 'success');
       } catch (err) {
-        const noticeType = core.getInput('notice-type');
-        const noticeTitle = core.getInput('notice-title') || `# 🤖 ${owner}/${repo} CI Notice`;
+        const noticeTypes = dealStringToArr(core.getInput('notice-types'));
+        const noticeTitle = core.getInput('notice-title') || `🤖 ${owner}/${repo} CI Notice`;
         const noticeBody =
           core.getInput('notice-body') ||
-          'CI: \n\n```' +
-            `\n${core.getInput('ci')}\n` +
-            '```' +
-            `\n\n🚨 Operation failed, please check in time!`;
+          '🚨 CI run failed, please check in time!\n\n```' + `\n${core.getInput('ci')}\n` + '```';
 
-        if (noticeType === 'dingding') {
-          const dingdingToken = core.getInput('dingding-token');
-          axios.post(`https://oapi.dingtalk.com/robot/send?access_token=${dingdingToken}`, {
-            msgtype: 'markdown',
-            markdown: {
+        for (let noticeType of noticeTypes) {
+          if (noticeType === 'dingding') {
+            const dingdingToken = core.getInput('dingding-token');
+            axios.post(`https://oapi.dingtalk.com/robot/send?access_token=${dingdingToken}`, {
+              msgtype: 'markdown',
+              markdown: {
+                title: noticeTitle,
+                text: `[#${noticeTitle}](https://github.com/${owner}/${repo})\n\n${noticeBody}`,
+              },
+            });
+          }
+
+          if (noticeType === 'issue') {
+            const labels = core.getInput('issue-labels');
+            const assignees = core.getInput('issue-assignees');
+
+            const params = {
+              owner,
+              repo,
               title: noticeTitle,
-              text: `${noticeTitle}\n\n${noticeBody}`,
-            },
-          });
-        }
-
-        if (noticeType === 'issue') {
-          const labels = core.getInput('issue-labels');
-          const assignees = core.getInput('issue-assignees');
-
-          const params = {
-            owner,
-            repo,
-            title: noticeTitle,
-            body: noticeBody,
-            labels: dealStringToArr(labels),
-            assignees: dealStringToArr(assignees),
-          };
-          const { data } = await octokit.issues.create(params);
-          core.info(`Actions: [create-issue][${data.number}] success!`);
+              body: noticeBody,
+              labels: dealStringToArr(labels),
+              assignees: dealStringToArr(assignees),
+            };
+            const { data } = await octokit.issues.create(params);
+            core.info(`Actions: [create-issue][${data.number}] success!`);
+          }
         }
 
         core.setOutput('result', 'failed');

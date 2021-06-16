@@ -19,7 +19,7 @@ inputs:
       npm install
       npm run build
       npm run test
-  notice-type:
+  notice-types:
     description: The notify way
   dingding-token:
     description: DingTalk token
