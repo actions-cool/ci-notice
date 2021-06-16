@@ -18,4 +18,4 @@ jobs:
           notice-types: 'dingding, issue'
           dingding-token: ${{ secrets.TEST_D }}
           lissue-labels: 'x1, x2'
-          issue-assignees: 'xrkffgg, zoo-js-bot'
+          issue-assignees: 'xrkffgg, HuaRin'
