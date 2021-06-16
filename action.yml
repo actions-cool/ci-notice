@@ -18,7 +18,6 @@ inputs:
     default: |
       npm install
       npm run build
-      npm run test
   notice-types:
     description: The notify way
   dingding-token:

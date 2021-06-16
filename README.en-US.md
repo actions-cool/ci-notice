@@ -1,6 +1,6 @@
-# 😱 CI 通知
+# 😱 CI 通知 ( Translation help )
 
-简体中文 | [English](./README.en-US.md)
+[简体中文](./README.md) | English
 
 ![](https://img.shields.io/github/workflow/status/actions-cool/ci-notice/CI?style=flat-square)
 [![](https://img.shields.io/badge/marketplace-ci-notice-blueviolet?style=flat-square)](https://github.com/marketplace/actions/ci-notice)

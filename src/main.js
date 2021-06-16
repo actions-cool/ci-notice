@@ -26,7 +26,9 @@ async function run() {
         const noticeTitle = core.getInput('notice-title') || `🤖 ${owner}/${repo} CI Notice`;
         const noticeBody =
           core.getInput('notice-body') ||
-          '🚨 CI run failed, please check in time!\n\n\n\n```' + `\n${core.getInput('ci')}\n` + '```';
+          '🚨 CI run failed, please check in time!\n\n\n\n```bash' +
+            `\n${core.getInput('ci')}\n` +
+            '```';
 
         for (let noticeType of noticeTypes) {
           if (noticeType === 'dingding') {
