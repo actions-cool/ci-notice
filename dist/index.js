@@ -12785,7 +12785,7 @@ async function run() {
               msgtype: 'markdown',
               markdown: {
                 title: noticeTitle,
-                text: `[#${noticeTitle}](https://github.com/${owner}/${repo})\n\n${noticeBody}`,
+                text: `#[${noticeTitle}](https://github.com/${owner}/${repo})\n\n${noticeBody}`,
               },
             });
           }
