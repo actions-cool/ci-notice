@@ -16,7 +16,7 @@
 
 https://github.com/actions-cool/ci-notice/issues/3
 
-## 🚀 如果使用？
+## 🚀 如何使用？
 
 > 你可以参照当前项目的例子来使用：https://github.com/actions-cool/ci-notice/blob/main/.github/workflows/ci-notice.yml
 >
