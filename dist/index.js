@@ -12765,18 +12765,19 @@ async function run() {
       const { owner, repo } = context.repo;
       core.info(`owner: ${owner}, repo: ${repo}`);
       const cis = core.getInput('ci').split('\n');
+      let result;
       try {
         for (const ci of cis) {
           core.info(`[Run] ${ci}`);
           await exec(ci);
         }
-        core.setOutput('result', 'success');
+        result = 'success';
       } catch (err) {
         const noticeTypes = dealStringToArr(core.getInput('notice-types'));
         const noticeTitle = core.getInput('notice-title') || `🤖 ${owner}/${repo} CI Notice`;
         const noticeBody =
           core.getInput('notice-body') ||
-          '🚨 CI run failed, please check in time!\n\n\n\n```bash' +
+          '🚨 CI run failed, please check in time!\n\n```bash' +
             `\n${core.getInput('ci')}\n` +
             '```';
 
@@ -12787,7 +12788,7 @@ async function run() {
               msgtype: 'markdown',
               markdown: {
                 title: noticeTitle,
-                text: `# [${noticeTitle}](https://github.com/${owner}/${repo})\n\n\n\n${noticeBody}`,
+                text: `# [${noticeTitle}](https://github.com/${owner}/${repo})\n\n${noticeBody}`,
               },
             });
           }
@@ -12809,8 +12810,11 @@ async function run() {
           }
         }
 
-        core.setOutput('result', 'failed');
+        result = 'failed';
       }
+
+      core.setOutput('result', result);
+      core.info(`[${owner}/${repo}] CI check result: ${result}`);
     } else {
       core.setFailed(`This Action is not support "pull_request_target"!`);
     }

@@ -36,7 +36,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@main
 
-      - uses: actions-cool/ci-notice@v1.0.0
+      - uses: actions-cool/ci-notice@v1.0.1
         with:
           ci: |
             npm install
@@ -65,7 +65,7 @@ jobs:
 
 ### outputs
 
-输出结果 `result`，根据结果可自定义操作。
+输出结果 `result`，`success` 或者 `failed`，可自定义结果操作。
 
 ## ⚡ 反馈
 
