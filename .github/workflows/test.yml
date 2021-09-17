@@ -12,8 +12,5 @@ jobs:
       - name: install
         run: yarn install
       
-      - name: format-check
-        run: yarn format-check
-
-      - name: package
-        run: yarn package
+      - name: all
+        run: yarn all
