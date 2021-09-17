@@ -2,19 +2,22 @@
   "name": "ci-notice",
   "private": true,
   "description": "😱 Notify you when CI fails",
-  "main": "src/main.js",
-  "scripts": {
-    "package": "ncc build",
-    "format": "prettier --write src/*.js",
-    "format-check": "prettier --check src/*.js"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/actions-cool/ci-notice",
     "branch": "main"
   },
-  "author": "xrkffgg",
   "license": "MIT",
+  "author": "xrkffgg",
+  "main": "src/main.ts",
+  "scripts": {
+    "format": "prettier --write src/*.ts",
+    "format-check": "prettier --check src/*.ts",
+    "lint": "eslint src/**/*.ts",
+    "lint-fix": "eslint src/**/*.ts --fix",
+    "package": "ncc build src/main.ts -o dist",
+    "all": "npm run format-check && npm run lint && npm run package"
+  },
   "dependencies": {
     "@actions/core": "^1.2.6",
     "@actions/exec": "^1.1.0",
@@ -24,8 +27,13 @@
     "axios": "^0.21.1"
   },
   "devDependencies": {
+    "@typescript-eslint/parser": "^4.15.2",
     "@umijs/fabric": "^2.5.6",
-    "@vercel/ncc": "^0.28.0",
-    "prettier": "^2.2.1"
+    "@vercel/ncc": "^0.27.0",
+    "eslint": "^7.14.0",
+    "eslint-plugin-github": "^4.1.1",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "prettier": "^2.2.1",
+    "typescript": "^4.1.2"
   }
 }

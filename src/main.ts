@@ -1,13 +1,13 @@
-const core = require('@actions/core');
-const github = require('@actions/github');
-const { exec } = require('@actions/exec');
-const { Octokit } = require('@octokit/rest');
-const axios = require('axios');
+import * as core from '@actions/core';
+import { exec } from '@actions/exec';
+import * as github from '@actions/github';
+import { Octokit } from '@octokit/rest';
+import { dealStringToArr } from 'actions-util';
+import axios from 'axios';
 
 const token = core.getInput('token');
 const octokit = new Octokit({ auth: `token ${token}` });
 const context = github.context;
-const { dealStringToArr } = require('actions-util');
 
 async function run() {
   try {
@@ -25,13 +25,15 @@ async function run() {
       } catch (err) {
         const noticeTypes = dealStringToArr(core.getInput('notice-types'));
         const noticeTitle = core.getInput('notice-title') || `🤖 ${owner}/${repo} CI Notice`;
-        const noticeBody =
+        let noticeBody =
           core.getInput('notice-body') ||
           '🚨 CI run failed, please check in time!\n\n```bash' +
             `\n${core.getInput('ci')}\n` +
             '```';
+        const runUrl = `https://github.com/${owner}/${repo}/actions/runs/${context.runId}`;
+        noticeBody += `\n[Logs: ${runUrl}]`;
 
-        for (let noticeType of noticeTypes) {
+        for (const noticeType of noticeTypes) {
           if (noticeType === 'dingding') {
             const dingdingToken = core.getInput('dingding-token');
             axios.post(`https://oapi.dingtalk.com/robot/send?access_token=${dingdingToken}`, {
@@ -68,7 +70,7 @@ async function run() {
     } else {
       core.setFailed(`This Action is not support "pull_request_target"!`);
     }
-  } catch (err) {
+  } catch (err: any) {
     core.setFailed(err.message);
   }
 }

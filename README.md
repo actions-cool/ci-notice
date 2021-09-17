@@ -36,7 +36,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@main
 
-      - uses: actions-cool/ci-notice@v1.0.1
+      - uses: actions-cool/ci-notice@v1
         with:
           ci: |
             npm install
