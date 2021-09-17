@@ -31,7 +31,7 @@ async function run() {
             `\n${core.getInput('ci')}\n` +
             '```';
         const runUrl = `https://github.com/${owner}/${repo}/actions/runs/${context.runId}`;
-        noticeBody += `\n[Logs: [${runUrl}](${runUrl})]`;
+        noticeBody += `\nLogs: [${runUrl}](${runUrl})`;
 
         for (const noticeType of noticeTypes) {
           if (noticeType === 'dingding') {
