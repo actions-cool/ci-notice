@@ -15,7 +15,7 @@ jobs:
       - uses: actions-cool/ci-notice@main
         with:
           ci: |
-            npm install
+            yarn
             npm run package
           notice-types: 'issue'
           issue-assignees: 'xrkffgg'
