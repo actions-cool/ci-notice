@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.1.1
+
+`2023.02.24`
+
+- chore: update node version.
+
 ## v1.1.0
 
 `2021.09.17`

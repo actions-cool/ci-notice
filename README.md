@@ -2,7 +2,7 @@
 
 简体中文 | [English](./README.en-US.md)
 
-![](https://img.shields.io/github/workflow/status/actions-cool/ci-notice/CI?style=flat-square)
+![](https://img.shields.io/github/actions/workflow/status/actions-cool/ci-notice/test.yml?style=flat-square)
 [![](https://img.shields.io/badge/marketplace-ci--notice-blueviolet?style=flat-square)](https://github.com/marketplace/actions/ci-notice)
 [![](https://img.shields.io/github/v/release/actions-cool/ci-notice?style=flat-square&color=orange)](https://github.com/actions-cool/ci-notice/releases)
 
