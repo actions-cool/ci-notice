@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@main
 
       - name: install
-        run: yarn install
+        run: npm i
       
       - name: all
-        run: yarn all
+        run: npm run all
