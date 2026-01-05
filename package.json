@@ -27,6 +27,7 @@
     "axios": "^0.21.1"
   },
   "devDependencies": {
+    "@types/minimatch": "^5.1.2",
     "@typescript-eslint/parser": "^4.15.2",
     "@umijs/fabric": "^2.5.6",
     "@vercel/ncc": "0.34.0",

@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@main
 
       - name: install
-        run: yarn install
+        run: yarn
       
       - name: all
-        run: yarn all
+        run: yarn run all
