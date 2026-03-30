@@ -16,7 +16,8 @@
     "lint": "eslint src/**/*.ts",
     "lint-fix": "eslint src/**/*.ts --fix",
     "package": "ncc build src/main.ts -o dist",
-    "all": "npm run format-check && npm run lint && npm run package"
+    "all": "npm run format-check && npm run lint && npm run package",
+    "tag": "node ./scripts/tag.js"
   },
   "dependencies": {
     "@actions/core": "^1.2.6",
@@ -24,8 +25,7 @@
     "@actions/github": "^4.0.0",
     "@octokit/rest": "^18.0.14",
     "actions-util": "^1.0.0",
-    "axios": "^0.21.1",
-    "tag": "node ./scripts/tag.js"
+    "axios": "^0.21.1"
   },
   "devDependencies": {
     "@types/minimatch": "^5.1.2",
